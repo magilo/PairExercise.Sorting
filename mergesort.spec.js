@@ -11,5 +11,6 @@ describe('Merge function', function () {
     // test the merging algorithm
     expect(merge([1, 2, 3], [4, 5, 6])).toEqual([1, 2, 3, 4, 5, 6]);
     expect(merge([4, 5, 6], [1, 2, 3])).toEqual([1, 2, 3, 4, 5, 6])
+    expect(merge([4, 5, 6, 7], [1, 2, 3])).toEqual([1, 2, 3, 4, 5, 6, 7])
   });
 });

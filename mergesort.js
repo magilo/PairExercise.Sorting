@@ -25,20 +25,33 @@ function merge(firstHalf, secondHalf) {
 
   if (firstLastNum < secondLastNum) {
     firstLen = firstHalf.length
-    secondLen = secondHalf.legnth
+    secondLen = secondHalf.length
   } else {
     firstLen = secondHalf.length
     secondLen = firstHalf.length
   }
+  console.log('secondLen is:', secondLen, 'firstLen is: ', firstLen)
 
-  while (i <= secondLen && j < firstLen) {
-    if (firstHalf[i] < secondHalf[j]) {
-      finalArray.push(firstHalf[i])
-      i++
+  while (i <= firstLen|| j < secondLen) {
+    if (!secondHalf[j]) {
+      console.log('Pushing firstHalf', firstHalf[i]);
+      finalArray.push(firstHalf[i]);
+      i++;
+    } else if (!firstHalf[i]) {
+      console.log('pushing secondHalf: ', secondHalf[j]);
+      finalArray.push(secondHalf[j]);
+      j++;
     } else {
-      finalArray.push(secondHalf[j])
-      j++
+        if (firstHalf[i] < secondHalf[j]) {
+          console.log("pushing ", firstHalf[i])
+          finalArray.push(firstHalf[i])
+          i++
+        } else {
+          finalArray.push(secondHalf[j])
+          j++
+        }
     }
+ 
   }
   //return one array
   return finalArray
