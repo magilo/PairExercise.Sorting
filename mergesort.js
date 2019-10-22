@@ -20,39 +20,24 @@ function merge(firstHalf, secondHalf) {
   let secondLen = null
 
 
-  let firstLastNum = firstHalf[firstHalf.length - 1]
-  let secondLastNum = secondHalf[secondHalf.length - 1]
-
-  if (firstLastNum < secondLastNum) {
-    firstLen = firstHalf.length
-    secondLen = secondHalf.length
-  } else {
-    firstLen = secondHalf.length
-    secondLen = firstHalf.length
-  }
-  console.log('secondLen is:', secondLen, 'firstLen is: ', firstLen)
-
-  while (i <= firstLen|| j < secondLen) {
-    if (!secondHalf[j]) {
-      console.log('Pushing firstHalf', firstHalf[i]);
-      finalArray.push(firstHalf[i]);
-      i++;
-    } else if (!firstHalf[i]) {
-      console.log('pushing secondHalf: ', secondHalf[j]);
-      finalArray.push(secondHalf[j]);
-      j++;
-    } else {
-        if (firstHalf[i] < secondHalf[j]) {
-          console.log("pushing ", firstHalf[i])
-          finalArray.push(firstHalf[i])
-          i++
-        } else {
-          finalArray.push(secondHalf[j])
-          j++
-        }
+  while (firstHalf.length > 0 && secondHalf.length > 0) {
+      if (firstHalf[0] < secondHalf[0]) {
+        finalArray.push(firstHalf[0]);
+        firstHalf = firstHalf.slice(1);
+      } else {
+        finalArray.push(secondHalf[0]);
+        secondHalf = secondHalf.slice(1);
+      }
     }
- 
-  }
+
+  if (firstHalf.length <= 0) {
+      finalArray = [...finalArray, ...secondHalf];
+    } else {
+      finalArray = [...finalArray, ...firstHalf];
+    }
+
   //return one array
   return finalArray
 }
+
+
